@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+        <p>Rock paper scissors</p>
+
+            <button
+            onclick=" 
+           pickcomputermove();
+           playGame('Rock');
+          "><p class="sign">👊</p>
+          </button>
+          <button
+            onclick="
+            pickcomputermove();
+            playGame('papper');
+          "> <p class="sign">✋</p>
+          </button>
+          <button onclick="
+            pickcomputermove();
+            playGame('scissor');
+            
+          "><p class="sign">✌</p></button>
+          <button onclick="
+          score.win=0;
+          score.lose=0;
+          score.tie=0;
+          "><p class="Reset">Reset </p></button>
+        
+       
+    </div>
+   
+
+    <script>
+
+      const score={
+        win:0,
+        lose:0,
+        tie:0
+      };
+       let machineResult='';
+      function pickcomputermove(){
+        const random=Math.random();
+   
+
+    if(random>=0 && random<1/3){
+    machineResult='Rock';  
+        }
+      else if(random>=1/3 && random<2/3){
+       machineResult='paper';
+                 }
+     else if(random>=2/3 && random<1){
+        machineResult='scissors';
+
+         }
+         return;
+      }
+      function playGame(playermove){
+
+        let Result='';
+        if(playermove==='scissor'){
+    if(machineResult==='Rock'){
+        Result='you lose ❌ !!';
+          }
+       else if(machineResult==='paper'){
+        Result='you win ✅!!';
+             }
+       else if(machineResult==='scissors'){
+        Result='Tie!!🤝';
+         }
+
+    
+        }
+      else if(playermove==='papper'){
+        if(machineResult==='Rock'){
+        Result='you win ✅!!';
+          }
+       else if(machineResult==='paper'){
+        Result='Tie!!🤝';
+             }
+       else if(machineResult==='scissors'){
+        Result='you lose ❌ !!';
+         }
+        
+      }
+      else if(playermove==='Rock'){
+
+        if(machineResult==='Rock'){
+        Result='Tie!!🤝';
+    }
+    else if(machineResult==='paper'){
+        Result='you lose ❌ !!';
+    }
+    else if(machineResult==='scissors'){
+        Result='you win ✅!!'
+    }
+   
+  
+      }
+
+     if(Result==='you win ✅!!'){
+      score.win+=1
+     }
+     else if(Result==='you lose ❌ !!'){
+      score.lose+=1
+     }
+     else if(Result==='Tie!!🤝'){
+     score.tie+=1
+     }
+      alert(`you pick ${playermove}. computer pick ${machineResult}. ${Result}
+      Win: ${score.win} Lose: ${score.lose} Tie: ${score.tie}`);
+      }
+
+      function ResetScore(){
+        
+      }
+    </script>
+  </body>
+</html>
